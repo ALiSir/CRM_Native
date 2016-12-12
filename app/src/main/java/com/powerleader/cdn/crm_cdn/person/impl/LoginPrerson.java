@@ -38,7 +38,6 @@ public class LoginPrerson implements LoginInterface,View.OnClickListener{
         switch (v.getId()){
             case R.id.btn:
                 Intent intent = new Intent();
-                //intent.setClass(LoginPrerson.class), HomeActivity.class);
                 break;
         }
     }

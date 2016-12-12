@@ -15,6 +15,7 @@ public class MainActivity extends MActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         li = new LoginPrerson(this);
+        li.initView(this.getWindow().getDecorView());
     }
 
 }

@@ -24,8 +24,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                app:srcCompat="@mipmap/crm_ico"
-                android:id="@+id/imageView" />
+                android:src="@mipmap/crm_ico"
+                android:id="@+id/image"/>
 
             <TextView
                 android:text="@string/login_titile"

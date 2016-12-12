@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     tools:context="com.powerleader.cdn.crm_cdn.MenuFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+    <TextView
+        android:text="@string/hello_blank_fragment"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8" />
 </FrameLayout>

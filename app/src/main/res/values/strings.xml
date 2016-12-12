@@ -1,4 +1,5 @@
 <resources>
+    <!-- login activity -->
     <string name="app_name">CRM</string>
     <string name="loginview_login">登陆</string>
     <string name="login_name_hint">用户名</string>
@@ -6,6 +7,8 @@
     <string name="login_security_code">验证码</string>
     <string name="login_remerber_pwd">记住密码</string>
     <string name="login_auto_login">自动登陆</string>
+
+    <!-- main activity -->
     <string name="login_titile">客户管理系统</string>
     <string name="home_title">CRM客户管理系统</string>
     <string name="home_home">首  页</string>
@@ -13,6 +16,7 @@
     <string name="home_documentary_records">跟单记录</string>
     <string name="home_recycle">回收站</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- menu fragment -->
+    <string name="hello_blank_fragment">menu test</string>
+
 </resources>

@@ -1,0 +1,20 @@
+package com.powerleader.cdn.crm_cdn;
+
+import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+
+import com.powerleader.cdn.crm_cdn.person.LoginInterface;
+import com.powerleader.cdn.crm_cdn.person.impl.LoginPrerson;
+import com.powerleader.cdn.crm_cdn.view.supper.MActivity;
+
+public class MainActivity extends MActivity {
+    private LoginInterface li;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        li = new LoginPrerson(this);
+    }
+
+}

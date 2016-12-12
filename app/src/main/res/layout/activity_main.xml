@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    tools:context="com.powerleader.cdn.crm_cdn.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:srcCompat="@mipmap/crm_ico"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:text="@string/login_titile"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:id="@+id/textView" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                style="@style/inputTest"
+                android:hint="@string/login_name_hint"
+                android:id="@+id/name"
+                android:layout_above="@+id/pwd"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+
+                style="@style/inputTest"
+                android:hint="@string/login_pwd_hint"
+                android:id="@+id/pwd"
+                android:layout_centerVertical="true"
+                android:layout_alignStart="@+id/name" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="@string/login_security_code"
+                    style="@style/inputTest"
+                    android:id="@+id/editText3"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="84dp"
+                    android:layout_height="38dp"
+                    android:src="@mipmap/checke_code"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:id="@+id/imageView2"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:text="@string/login_remerber_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/remerber_pwd"
+                    android:layout_marginLeft="30dp"
+                    style="@style/chekeBox"
+                    android:layout_weight="1" />
+
+                <CheckBox
+                    android:text="@string/login_auto_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/auto_login"
+                    android:layout_marginRight="30dp"
+                    style="@style/chekeBox"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pwd"
+                android:text="@string/loginview_login"
+                style="@style/btnStyle"
+                android:id="@+id/btn" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

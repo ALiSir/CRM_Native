@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-import com.powerleader.cdn.crm_cdn.HomeActivity;
-import com.powerleader.cdn.crm_cdn.MainActivity;
 import com.powerleader.cdn.crm_cdn.R;
 import com.powerleader.cdn.crm_cdn.person.LoginInterface;
 

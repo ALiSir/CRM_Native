@@ -1,7 +1,6 @@
 package com.powerleader.cdn.crm_cdn;
 
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 
 import com.powerleader.cdn.crm_cdn.person.LoginInterface;
 import com.powerleader.cdn.crm_cdn.person.impl.LoginPrerson;
@@ -17,5 +16,4 @@ public class MainActivity extends MActivity {
         li = new LoginPrerson(this);
         li.initView(this.getWindow().getDecorView());
     }
-
 }

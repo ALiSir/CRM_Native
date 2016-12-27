@@ -38,6 +38,7 @@ public class LoginForm {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
+                //t.printStackTrace();
                 onLoginResult.loginResult(new JsonObject(-1, null, t.getMessage()));
             }
         });

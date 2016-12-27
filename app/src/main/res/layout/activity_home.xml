@@ -15,30 +15,40 @@
         android:layout_alignParentStart="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorHomeTitle"
             android:orientation="horizontal"
-            android:id="@+id/seatchLin"
-            android:padding="5dp">
-
-            <SearchView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/searchView"
-                android:background="@color/colorWhite" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mainBackground"
+            >
 
             <TextView
-                android:text="功能菜单栏"
-                android:textSize="15sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/teileText"
+                android:text="    < 退出"
                 android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:visibility="gone"
-                android:backgroundTint="@color/colorHomeTitle"
-                android:background="@color/colorWhite" />
+                android:id="@+id/imageButton"
+                />
+
+            <TextView
+                android:text="跟单记录"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/textView33"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="添加     "
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/imageButton2"
+                />
         </LinearLayout>
 
         <FrameLayout
@@ -49,10 +59,16 @@
 
         </FrameLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine"
+            android:id="@+id/textView43" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorHomeTitle"
+            android:background="@color/colorWhite"
             android:orientation="horizontal">
 
             <LinearLayout

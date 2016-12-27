@@ -14,4 +14,6 @@
     <color name="colorHomehomeDan">#e35258</color>
     <color name="colorHomehomerecycle">#56bee9</color>
     <color name="colorHomebtn">#5fb95f</color>
+    <color name="mainBackground">#FF30AAF2</color>
+    <color name="colorLine">#FFEAEBF0</color>
 </resources>

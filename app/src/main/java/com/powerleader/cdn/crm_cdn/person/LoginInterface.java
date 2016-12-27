@@ -9,5 +9,6 @@ import android.view.View;
 public interface LoginInterface {
     public void initView(View view);
     public void login();
+    void skipToHome();
 
 }

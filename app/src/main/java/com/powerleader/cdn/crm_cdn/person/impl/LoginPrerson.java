@@ -1,13 +1,17 @@
 package com.powerleader.cdn.crm_cdn.person.impl;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.powerleader.cdn.crm_cdn.HomeActivity;
+import com.powerleader.cdn.crm_cdn.LoginActivity;
 import com.powerleader.cdn.crm_cdn.R;
 import com.powerleader.cdn.crm_cdn.bean.JsonObject;
 import com.powerleader.cdn.crm_cdn.bean.Tp_user;
@@ -19,13 +23,14 @@ import com.powerleader.cdn.crm_cdn.person.LoginInterface;
  */
 
 public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginForm.OnLoginResult {
-    private Context context;
+    private Activity context;
     private Button btn;
     private EditText nameText, pwdText;
     private Tp_user tp_user;
     private LoginForm loginForm;
+    private ProgressBar loginprogressBar;
 
-    public LoginPrerson(Context context) {
+    public LoginPrerson(Activity context) {
         this.context = context;
     }
 
@@ -35,6 +40,7 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginF
         btn.setOnClickListener(this);
         nameText = (EditText) view.findViewById(R.id.name);
         pwdText = (EditText) view.findViewById(R.id.password);
+        loginprogressBar = (ProgressBar) view.findViewById(R.id.loginprogressBar);
         loginForm = new LoginForm();
         loginForm.setOnLoginResult(this);
     }
@@ -54,12 +60,28 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginF
                 pwdText.setFocusable(true);
                 return;
         }
+        loginprogressBar.setVisibility(View.VISIBLE);
         loginForm.loginPostQuery(tp_user);
     }
 
     @Override
     public void loginResult(JsonObject jsonObject) {
-        Toast.makeText(context,jsonObject.toString(),Toast.LENGTH_LONG);
+        loginprogressBar.setVisibility(View.GONE);
+        Toast.makeText(context,jsonObject.getMsg(),Toast.LENGTH_LONG).show();
+        if(jsonObject.getErrorCode() == 0){
+            tp_user = new Gson().fromJson(new Gson().toJson(jsonObject.getObject()),Tp_user.class);
+            Log.i(LoginActivity.TAG, "loginResult: 登录成功"+tp_user.toString());
+            skipToHome();
+            return;
+        }
+    }
+
+    @Override
+    public void skipToHome(){
+        Intent intent = new Intent();
+        intent.setClass(context,HomeActivity.class);
+        context.startActivity(intent);
+        context.finish();
     }
 
     @Override

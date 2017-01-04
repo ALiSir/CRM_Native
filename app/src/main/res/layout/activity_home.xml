@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
@@ -18,36 +19,38 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/homeMian"
             android:background="@color/mainBackground"
             >
 
             <TextView
-                android:text="    < 退出"
+                android:paddingLeft="20dp"
+                android:text="退出"
                 android:textColor="@color/colorWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:id="@+id/imageButton"
-                />
+                android:id="@+id/exitBtn"
+                android:gravity="center" />
 
             <TextView
                 android:text="跟单记录"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:id="@+id/textView33"
+                android:id="@+id/hometitle"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:layout_weight="1" />
 
             <TextView
-                android:text="添加     "
+                android:paddingRight="20dp"
+                android:text="添加"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton2"
+                android:id="@+id/hometitleright"
                 />
         </LinearLayout>
 
@@ -75,30 +78,32 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/linecus"
                 android:layout_weight="1.04">
 
                 <ImageButton
-                    android:id="@+id/button2"
+                    android:id="@+id/imageCus"
                     style="@style/home_menu_btn"
-                    android:src="@mipmap/users"/>
+                    android:src="@mipmap/user_nor"/>
 
                 <TextView
                     android:text="所有客户"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/home_menu_str"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textViewCus" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.04"
+                android:id="@+id/linedanju"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:src="@mipmap/danju"
-                    android:id="@+id/button8"
+                    android:src="@mipmap/danju_nor"
+                    android:id="@+id/ImageDanJu"
                     style="@style/home_menu_btn"
                      />
 
@@ -107,7 +112,7 @@
                     style="@style/home_menu_str"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/TextDanju" />
 
             </LinearLayout>
 
@@ -115,19 +120,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.04"
+                android:id="@+id/moreContext"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/button9"
+                    android:id="@+id/ImageMore"
                     style="@style/home_menu_btn"
-                    android:src="@mipmap/anymore" />
+                    android:src="@mipmap/more_nor" />
 
                 <TextView
                     android:text="更多..."
                     style="@style/home_menu_str"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView4" />
+                    android:id="@+id/textViewMore" />
             </LinearLayout>
         </LinearLayout>
 

@@ -8,6 +8,7 @@
     <color name="colorLoginBtn">#FFEB612F</color>
     <color name="colorHomeTitle">#FF1091D2</color>
     <color name="colorHomeSubBtn">#FFEEEEEE</color>
+    <color name="colorSearch">#FFCCCCCC</color>
     <color name="colorHomehometextNormol">#f37c1f</color>
     <color name="colorHomehometextFoce">#FFEBB9</color>
     <color name="colorHomehomeAllCustom">#5fb95f</color>
@@ -16,4 +17,6 @@
     <color name="colorHomebtn">#5fb95f</color>
     <color name="mainBackground">#FF30AAF2</color>
     <color name="colorLine">#FFEAEBF0</color>
+    <color name="colorHomeSubBtnNormol">#676c7f</color>
+    <color name="colorHomeSubBtnSelect">#30aaf1</color>
 </resources>

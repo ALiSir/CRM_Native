@@ -30,4 +30,9 @@
     <style name="home_sub_text">
         <item name="android:textAlignment">center</item>
     </style>
+    
+    <style name="search_danju">
+        <item name="android:background">@drawable/m_shape_search</item>
+    </style>
+    
 </resources>

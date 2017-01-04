@@ -17,18 +17,29 @@ import com.powerleader.cdn.crm_cdn.bean.JsonObject;
 import com.powerleader.cdn.crm_cdn.bean.Tp_user;
 import com.powerleader.cdn.crm_cdn.net.LoginForm;
 import com.powerleader.cdn.crm_cdn.person.LoginInterface;
+import com.powerleader.cdn.crm_cdn.util.database.DataTp_user;
+import com.powerleader.cdn.crm_cdn.util.database.impl.DataTp_userImpl;
+
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.codec.digest.Md5Crypt;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by Administrator on 2016/12/9.
+ * Created by ALiSir on 2016/12/9.
  */
 
 public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginForm.OnLoginResult {
+    private static final String TAG = LoginPrerson.class.getSimpleName();
     private Activity context;
     private Button btn;
     private EditText nameText, pwdText;
     private Tp_user tp_user;
     private LoginForm loginForm;
     private ProgressBar loginprogressBar;
+    private DataTp_user dataTp_user;
 
     public LoginPrerson(Activity context) {
         this.context = context;
@@ -43,6 +54,7 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginF
         loginprogressBar = (ProgressBar) view.findViewById(R.id.loginprogressBar);
         loginForm = new LoginForm();
         loginForm.setOnLoginResult(this);
+        dataTp_user = new DataTp_userImpl();
     }
 
     @Override
@@ -60,6 +72,7 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginF
                 pwdText.setFocusable(true);
                 return;
         }
+        tp_user.setPassword(new String(Hex.encodeHex(DigestUtils.sha1(new String(Hex.encodeHex(DigestUtils.md5(tp_user.getPassword())))))));
         loginprogressBar.setVisibility(View.VISIBLE);
         loginForm.loginPostQuery(tp_user);
     }
@@ -67,13 +80,14 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener,LoginF
     @Override
     public void loginResult(JsonObject jsonObject) {
         loginprogressBar.setVisibility(View.GONE);
-        Toast.makeText(context,jsonObject.getMsg(),Toast.LENGTH_LONG).show();
         if(jsonObject.getErrorCode() == 0){
             tp_user = new Gson().fromJson(new Gson().toJson(jsonObject.getObject()),Tp_user.class);
             Log.i(LoginActivity.TAG, "loginResult: 登录成功"+tp_user.toString());
+            dataTp_user.updateTp_user(tp_user);
             skipToHome();
             return;
         }
+        Toast.makeText(context,jsonObject.getMsg(),Toast.LENGTH_LONG).show();
     }
 
     @Override

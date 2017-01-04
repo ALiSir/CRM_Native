@@ -15,8 +15,11 @@
     <string name="home_all_custom">所有客户</string>
     <string name="home_documentary_records">跟单记录</string>
     <string name="home_recycle">回收站</string>
+    <string name="home_exit">s退出</string>
 
     <!-- menu fragment -->
     <string name="hello_blank_fragment">menu test</string>
+
+
 
 </resources>

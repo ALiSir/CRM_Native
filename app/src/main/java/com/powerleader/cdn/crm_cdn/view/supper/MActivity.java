@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.view.WindowManager;
 
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 public class MActivity extends FragmentActivity {
     private static Context mContext;
     public static int INFO_SHOW = 0;
+    private static String androidID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,11 @@ public class MActivity extends FragmentActivity {
         if (INFO_SHOW > 0) {
             INFO_SHOW = getResources().getDimensionPixelSize(INFO_SHOW);
         }
+        androidID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+    public static String getAndroidID() {
+        return androidID;
     }
 
     @Override

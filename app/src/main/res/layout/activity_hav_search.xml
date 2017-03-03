@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hav_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00000000"
+    tools:context="com.powerleader.cdn.crm_cdn.view.hav.HavSearchActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statussearchheard" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <com.powerleader.cdn.crm_cdn.view.hav.SearchEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="请输入搜索内容"
+            android:textSize="13sp"
+            android:ems="10"
+            android:id="@+id/searchtext"
+            android:drawableLeft="@mipmap/search_img"
+            style="@style/search_header_text"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:id="@+id/searchback" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/hav_search_list"/>
+
+
+</LinearLayout>

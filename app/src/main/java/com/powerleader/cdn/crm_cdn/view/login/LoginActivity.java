@@ -1,25 +1,21 @@
-package com.powerleader.cdn.crm_cdn;
+package com.powerleader.cdn.crm_cdn.view.login;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.powerleader.cdn.crm_cdn.person.HomeInterface;
-import com.powerleader.cdn.crm_cdn.person.impl.HomePerson;
+import com.powerleader.cdn.crm_cdn.R;
+import com.powerleader.cdn.crm_cdn.person.login.LoginInterface;
+import com.powerleader.cdn.crm_cdn.person.login.LoginPrerson;
 import com.powerleader.cdn.crm_cdn.view.supper.MActivity;
 
-public class HomeActivity extends MActivity {
-    private HomeInterface hi;
+public class LoginActivity extends MActivity {
+    public static final String TAG = "登陆：";
+    private LoginInterface loginInterface;
     private boolean isExit = false;
-    private TextView exitBtn;
-    private LinearLayout homeMain;
+    private static int Uid = 0;
 
     private Handler handler = new Handler(){
         @Override
@@ -32,20 +28,9 @@ public class HomeActivity extends MActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        View view = getWindow().getDecorView();
-        hi = new HomePerson(this, view);
-        hi.start();
-        exitBtn = (TextView) view.findViewById(R.id.exitBtn);
-        exitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                System.exit(0);
-            }
-        });
-        homeMain = (LinearLayout) findViewById(R.id.homeMian);
-        homeMain.setPadding(0,INFO_SHOW-10,0,0);
+        setContentView(R.layout.activity_login);
+        loginInterface = new LoginPrerson(this);
+        loginInterface.initView(getWindow().getDecorView());
     }
 
     @Override
@@ -62,5 +47,13 @@ public class HomeActivity extends MActivity {
             return false;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public static int getUid() {
+        return Uid;
+    }
+
+    public static void setUid(int uid) {
+        Uid = uid;
     }
 }

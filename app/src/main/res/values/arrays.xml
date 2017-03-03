@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="industry">
+        <item>服务业</item>
+        <item>财会 | 金融</item>
+        <item>医疗 | 制药 | 环保</item>
+        <item>法律 | 教育 | 翻译 | 出版</item>
+        <item>网络 | 通信 | 电子</item>
+        <item>建筑 | 房产 | 物业</item>
+        <item>汽车制造 | 服务</item>
+        <item>生产 | 物流 | 质控</item>
+        <item>市场 | 媒介 | 广告 | 设计</item>
+        <item>销售 | 客服 | 采购</item>
+        <item>人力 | 行政 | 管理</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="clientType">
+        <item>成长型</item>
+        <item>创业型</item>
+        <item>完美型</item>
+        <item>鼎盛时期</item>
+    </string-array>
+
+    <string-array name="clientLevel">
+        <item>★</item>
+        <item>★★</item>
+        <item>★★★</item>
+        <item>★★★★</item>
+        <item>★★★★★</item>
+        <item>★★★★★★</item>
+    </string-array>
+
+    <string-array name="followUp">
+        <item>初次接触</item>
+        <item>已报价</item>
+        <item>测试阶段</item>
+        <item>商务谈判</item>
+        <item>合同流程</item>
+        <item>已签约</item>
+    </string-array>
+
+    <string-array name="wast">
+        <item>电话联系</item>
+        <item>上门拜访</item>
+        <item>QQ联系</item>
+        <item>Email联系</item>
+        <item>其它方式</item>
+    </string-array>
+
+    <string-array name="intent">
+        <item>意向明确</item>
+        <item>有一定意向</item>
+        <item>不明确</item>
+        <item>未知</item>
+    </string-array>
+
+    <string-array name="cusEdit">
+        <item>编辑</item>
+        <item>修改</item>
+        <item>删除</item>
+    </string-array>
+
+</resources>

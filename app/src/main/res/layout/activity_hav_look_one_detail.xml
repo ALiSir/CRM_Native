@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hav_look_one_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.powerleader.cdn.crm_cdn.view.hav.HavLookOneDetailActivity">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/danjudeltailoneheader"
+        android:background="@color/mainBackground">
+
+        <TextView
+            android:text="跟单详情"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:id="@+id/textView2"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

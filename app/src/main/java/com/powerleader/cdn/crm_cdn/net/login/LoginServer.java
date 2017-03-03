@@ -1,8 +1,12 @@
-package com.powerleader.cdn.crm_cdn.net.implement;
+package com.powerleader.cdn.crm_cdn.net.login;
 
 import com.powerleader.cdn.crm_cdn.bean.Contents;
 import com.powerleader.cdn.crm_cdn.bean.JsonObject;
+import com.powerleader.cdn.crm_cdn.bean.LoginResult;
 import com.powerleader.cdn.crm_cdn.bean.Tp_user;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -17,5 +21,5 @@ public interface LoginServer {
 
     @FormUrlEncoded
     @POST(Contents.LOGIN_FORM)
-    Call<JsonObject> postNamePwd(@Field("tp_user") Tp_user tp_user);
+    Call<HashMap<String,Object>> postNamePwd(@Field("username") String username, @Field("password") String password, @Field("deviceid") String deviceid);
 }

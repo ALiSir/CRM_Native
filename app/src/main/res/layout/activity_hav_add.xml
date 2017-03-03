@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hav_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.powerleader.cdn.crm_cdn.view.hav.HavAddActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="添加客户"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="客户/公司："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="客户/公司"
+                    android:ems="10"
+                    android:id="@+id/CompanyName"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="详细地址："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="地址"
+                    android:ems="10"
+                    android:id="@+id/Address"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="联系人："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="姓名"
+                    android:ems="10"
+                    android:id="@+id/xxxxx"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+
+    <!--`CompanyName` char(60) DEFAULT NULL COMMENT '公司名称',-->
+    <!--`Address` char(100) DEFAULT NULL COMMENT '详细地址',-->
+    <!--`ZipCode` char(10) DEFAULT NULL COMMENT '邮编',-->
+    <!--`WebUrl` varchar(60) DEFAULT NULL COMMENT '网站地址',-->
+    <!--`Industry` tinyint(4) DEFAULT '0' COMMENT '属所行业',-->
+    <!--`ClientType` tinyint(4) DEFAULT '0' COMMENT '客户类型',-->
+    <!--`ClientLevel` tinyint(4) DEFAULT '0' COMMENT '客户级别',-->
+    <!--`ClientSource` tinyint(4) DEFAULT '0' COMMENT '客户来源',-->
+    <!--`FollowUp` tinyint(4) DEFAULT '0' COMMENT '跟进情况',-->
+    <!--`Wast` tinyint(4) DEFAULT '0' COMMENT '跟单类型',-->
+    <!--`Intent` tinyint(4) DEFAULT '0' COMMENT '户客意向',-->
+    <!--`MainItems` varchar(200) DEFAULT NULL COMMENT '主营项目',-->
+    <!--`Message` varchar(1000) DEFAULT NULL COMMENT '备注，其它',-->
+    <!--`OpenShare` tinyint(1) DEFAULT '0' COMMENT '是否共享',-->
+    <!--`Share` varchar(500) DEFAULT NULL COMMENT '针对共享',-->
+    <!--`Recycle` tinyint(1) DEFAULT '0' COMMENT '是否在回收站',-->
+    <!--`Dtime` datetime DEFAULT NULL COMMENT '录入时间',-->
+    <!--`FinalTime` datetime DEFAULT NULL COMMENT '最后更新时间',-->
+    <!--`Describe` varchar(255) DEFAULT NULL,-->
+    <!--`Issuccess` int(255) NOT NULL DEFAULT '0',-->

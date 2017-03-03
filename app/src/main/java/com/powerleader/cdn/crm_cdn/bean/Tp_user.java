@@ -46,7 +46,7 @@ INSERT INTO `tp_user` VALUES ('34', 'admins', '10470c3b4b1fed12c3baac014be15fac6
 INSERT INTO `tp_user` VALUES ('35', '李岳霖', '10470c3b4b1fed12c3baac014be15fac67c6e815', 'yuelin.li@powerleader.com.cn', '1', '0', '2,3,4,5,7,8,9,10,12,13,14,15,21,22,23,24,25,26,27,28,18,19,20,82,83,29,30,52,53,60,61,62,63,65,66,67,68,69,70,71,72,73,74,75,76,78,79,80,81,85', '', '.', '4', null, '2016-12-13 10:56:10', '2016-11-02 15:18:25');
 
     * */
-    int id;
+    int id; //收到的id   =》  UID
     String username;//用户名
     String password;//密码
     String email;//管理员Email

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cus_add_one"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.powerleader.cdn.crm_cdn.view.cus.EditCusActivity">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorSearch">
+
+            <TextView
+                android:text="返回"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/goBack"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorHomeSubBtnSelect"
+                android:layout_marginTop="15dp"
+                android:textSize="14sp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:text="添加客户"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cuseditile"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:text="保存"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/goEdit"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorHomeSubBtnSelect"
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="550dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="客户/公司："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt1"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:forceHasOverlappingRendering="true"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="详细地址："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt2"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="联系人："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt3"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="联系人电话："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt4"
+                        android:inputType="phone"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="QQ："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt5"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="微信："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        style="@style/add_cus_text"
+                        android:id="@+id/edt6"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="公司网址："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:id="@+id/edt7"
+                        style="@style/add_cus_text"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="属所行业："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/industry"
+                        android:textAlignment="center"
+                        android:id="@+id/spn1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="客户类型："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/clientType"
+                        android:textAlignment="center"
+                        android:id="@+id/spn2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="预计成单率："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/clientLevel"
+                        android:textAlignment="center"
+                        android:id="@+id/spn3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="跟进情况："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/followUp"
+                        android:textAlignment="center"
+                        android:id="@+id/spn4" />
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="跟单类型："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/wast"
+                        android:textAlignment="center"
+                        android:id="@+id/spn5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="客户意向："
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/intent"
+                        android:textAlignment="center"
+                        android:id="@+id/spn6" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="项目简介："
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:gravity="center" />
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:text=""
+                                android:textSize="12sp"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:minLines="8"
+                                android:maxLines="10"
+                                android:scrollbars="vertical"
+                                android:background="#FFF"
+                                android:padding="5dp"
+                                android:id="@+id/edt8" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

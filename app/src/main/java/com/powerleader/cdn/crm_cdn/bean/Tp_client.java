@@ -37,7 +37,7 @@ public class Tp_client extends RealmObject {
 //    `Issuccess` int(255) NOT NULL DEFAULT '0',
 //    PRIMARY KEY (`ID`)
 //    ) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=utf8;
-
+    int sortid; //排序ID
     int id;  //主键
     int uid; //用户ID
     int cid;//默认联系人ID
@@ -63,6 +63,14 @@ public class Tp_client extends RealmObject {
     int issuccess;
 
     public Tp_client() {
+    }
+
+    public int getSortid() {
+        return sortid;
+    }
+
+    public void setSortid(int sortid) {
+        this.sortid = sortid;
     }
 
     public int getId() {

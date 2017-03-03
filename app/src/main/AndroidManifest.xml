@@ -11,15 +11,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ACFCustomActivity"></activity>
+        <activity android:name=".view.HomeActivity" />
+        <activity android:name=".ACFCustomActivity" />
+        <activity android:name=".view.hav.HavSearchActivity" />
+        <activity android:name=".view.hav.HavLookOneDetailActivity" />
+        <activity android:name=".view.hav.HavAddActivity" />
+        <activity android:name=".view.cus.CusLookOneDetailActivity" />
+        <activity android:name=".view.cus.EditCusActivity"></activity>
     </application>
 
 </manifest>

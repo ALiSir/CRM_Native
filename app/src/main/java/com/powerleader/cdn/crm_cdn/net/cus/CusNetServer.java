@@ -7,6 +7,7 @@ import com.powerleader.cdn.crm_cdn.irx.cus.AddOneCusRx;
 import com.powerleader.cdn.crm_cdn.irx.cus.CusLookOneDetailRx;
 import com.powerleader.cdn.crm_cdn.irx.cus.DeteleOneCusRx;
 import com.powerleader.cdn.crm_cdn.irx.cus.EditGetOneCusDetail;
+import com.powerleader.cdn.crm_cdn.irx.cus.UpdateOneCusRx;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -113,6 +114,55 @@ public class CusNetServer {
                     }
                 }));
                 cusLookOneDetailRx.getLogOb().subscribe(cusLookOneDetailRx.getLogSub());
+            }
+        });
+    }
+
+    public void  updateOneCus(Map<String,String> data){
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(60, TimeUnit.SECONDS);
+        builder.readTimeout(60, TimeUnit.SECONDS);
+        builder.writeTimeout(60, TimeUnit.SECONDS);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Contents.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+
+        CusNet cusServer = retrofit.create(CusNet.class);
+
+        Call<HashMap<String,Object>> tuUser = cusServer.postGetResult(data);
+
+        tuUser.enqueue(new Callback<HashMap<String,Object>>() {
+            @Override
+            public void onResponse(Call<HashMap<String,Object>> call, Response<HashMap<String,Object>> response) {
+                Log.i(TAG, "onResponse: "+response.body().toString());
+                final HashMap<String,Object> result = response.body();
+                UpdateOneCusRx addOneCusRx = UpdateOneCusRx.cusRxInit();
+                addOneCusRx.setLogOb(rx.Observable.create(new rx.Observable.OnSubscribe<HashMap<String,Object>>(){
+                    @Override
+                    public void call(Subscriber<? super HashMap<String,Object>> subscriber) {
+                        subscriber.onNext(result);
+                    }
+                }));
+                addOneCusRx.getLogOb().subscribe(addOneCusRx.getLogSub());
+            }
+
+            @Override
+            public void onFailure(Call<HashMap<String,Object>> call, Throwable t) {
+                final HashMap<String,Object> result = new HashMap<String, Object>();
+                result.put("code",-1);
+                result.put("msg",t.getMessage());
+                Log.i(TAG, "onFailure: "+result.toString());
+                UpdateOneCusRx addOneCusRx = UpdateOneCusRx.cusRxInit();
+                addOneCusRx.setLogOb(rx.Observable.create(new rx.Observable.OnSubscribe<HashMap<String,Object>>(){
+                    @Override
+                    public void call(Subscriber<? super HashMap<String,Object>> subscriber) {
+                        subscriber.onNext(result);
+                    }
+                }));
+                addOneCusRx.getLogOb().subscribe(addOneCusRx.getLogSub());
             }
         });
     }

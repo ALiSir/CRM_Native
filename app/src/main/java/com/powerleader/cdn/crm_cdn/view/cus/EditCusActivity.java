@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,9 +19,11 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.powerleader.cdn.crm_cdn.R;
 import com.powerleader.cdn.crm_cdn.irx.cus.AddOneCusRx;
 import com.powerleader.cdn.crm_cdn.irx.cus.EditGetOneCusDetail;
+import com.powerleader.cdn.crm_cdn.irx.cus.UpdateOneCusRx;
 import com.powerleader.cdn.crm_cdn.net.cus.CusNetServer;
 import com.powerleader.cdn.crm_cdn.view.login.LoginActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +39,7 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
     ProgressDialog dialog;
     static EditRefreshData edtdata;
     LinkedTreeMap<String, Object> result;
+    String cid,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +52,6 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
     }
 
     void startSelf() {
-        isEdit = getIntent().getBooleanExtra("isEdit", false);
-        if (isEdit) {
-            str2.setText("修改");
-            cuseditile.setText("修改客户");
-            Log.i(TAG, "startSelf: "+getIntent().getIntExtra("id",0));
-            initChange(getIntent().getIntExtra("id",0));
-        }else{
-            str2.setText("保存");
-            cuseditile.setText("添加客户");
-        }
-
         EditGetOneCusDetail deletRx = EditGetOneCusDetail.cusRxInit();
         deletRx.setLogSub(new Subscriber<HashMap<String, Object>>() {
                               @Override
@@ -119,10 +112,44 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        UpdateOneCusRx updateCusRx = UpdateOneCusRx.cusRxInit();
+        updateCusRx.setLogSub(new Subscriber<HashMap<String, Object>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(HashMap<String, Object> result) {
+                dialog.dismiss();
+                if (result.get("code").toString().equals("0")) {
+                    alertShowMsg("修改提示!", "修改成功！");
+                } else {
+                    alertShowMsg("修改出错!", result.get("msg").toString());
+                }
+            }
+        });
+
+        isEdit = getIntent().getBooleanExtra("isEdit", false);
+        if (isEdit) {
+            str2.setText("修改");
+            cuseditile.setText("修改客户");
+            initChange(getIntent().getIntExtra("id",0));
+        }else{
+            str2.setText("保存");
+            cuseditile.setText("添加客户");
+        }
+
     }
 
     void changeDataCome(LinkedTreeMap<String,String> data){
-        Log.i(TAG, "changeDataCome: "+data);
+        id = data.get("id");
+        cid = data.get("cid");
         edt1.setText(data.get("companyName"));
         edt2.setText(data.get("address"));
         edt3.setText(data.get("contactName"));
@@ -132,7 +159,23 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
         edt7.setText(data.get("webUrl"));
         edt8.setText(data.get("message"));
 
+        spn1.setSelection(getSpnSelect(data.get("industry"),R.array.industry));
+        spn2.setSelection(getSpnSelect(data.get("clientType"),R.array.clientType));
+        spn3.setSelection(getSpnSelect(data.get("clientLevel"),R.array.clientLevel));
+        spn4.setSelection(getSpnSelect(data.get("followUp"),R.array.followUp));
+        spn5.setSelection(getSpnSelect(data.get("wast"),R.array.wast));
+        spn6.setSelection(getSpnSelect(data.get("intent"),R.array.intent));
+    }
 
+    int getSpnSelect(String value,int resouceValue){
+        Resources res = getResources () ;
+        String [] arrays = res.getStringArray (resouceValue);
+        for (int i = 0;i <arrays.length;i++ ){
+            if (arrays[i].equals(value) ){
+                return i;
+            }
+        }
+        return 0;
     }
 
     void initChange(int id){
@@ -219,7 +262,31 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
         }
 
         if (isEdit) {
+            Map<String, String> data = new HashMap<>();
+            data.put("Uid", LoginActivity.getUid() + "");
+            data.put("CompanyName", edt1.getText().toString());
+            data.put("Address", edt2.getText().toString());
+            data.put("ContactName", edt3.getText().toString());
+            data.put("Phone", edt4.getText().toString());
+            data.put("Qq", edt5.getText().toString());
+            data.put("Skype", edt6.getText().toString());
+            data.put("WebUrl", edt7.getText().toString());
+            data.put("Describe", edt8.getText().toString());
 
+            data.put("info", "updateOneCus");
+            data.put("id",id);
+            data.put("Cid",cid);
+
+            data.put("Industry", spn1.getSelectedItem().toString());
+            data.put("ClientType", spn2.getSelectedItem().toString());
+            data.put("ClientLevel", spn3.getSelectedItem().toString());
+            data.put("FollowUp", spn4.getSelectedItem().toString());
+            data.put("Wast", spn5.getSelectedItem().toString());
+            data.put("Intent", spn6.getSelectedItem().toString());
+
+            cusNet.updateOneCus(data);
+
+            dialog = ProgressDialog.show(this, "修改提示！", "正在提交修改数据，请稍后...");
         } else {
             Map<String, String> data = new HashMap<>();
             data.put("Uid", LoginActivity.getUid() + "");
@@ -264,7 +331,7 @@ public class EditCusActivity extends Activity implements View.OnClickListener {
             super.handleMessage(msg);
             switch (msg.what){
                 case 0x123:
-                    changeDataCome((LinkedTreeMap<String,String>)msg.obj);
+                    changeDataCome(((ArrayList<LinkedTreeMap<String,String>>)msg.obj).get(0));
                     break;
             }
         }

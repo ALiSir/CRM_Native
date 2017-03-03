@@ -18,6 +18,7 @@ public class UpdateOneCusRx {
     public static UpdateOneCusRx cusRxInit(){
         if(cusRx == null){
             cusRx = new UpdateOneCusRx();
+
         }
         return cusRx;
     }

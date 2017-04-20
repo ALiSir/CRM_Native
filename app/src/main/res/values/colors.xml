@@ -19,4 +19,5 @@
     <color name="colorLine">#FFEAEBF0</color>
     <color name="colorHomeSubBtnNormol">#676c7f</color>
     <color name="colorHomeSubBtnSelect">#30aaf1</color>
+    <color name="colorMoreUserBg">#90CCCCCC</color>
 </resources>

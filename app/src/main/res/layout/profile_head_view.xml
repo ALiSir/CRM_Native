@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:gravity="bottom">
+
+    <com.powerleader.cdn.crm_cdn.util.RoundUrlImageView
+        android:id="@+id/iv_user_head"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/user_example"
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="77dp" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="王牌CDN销售"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
+</RelativeLayout>

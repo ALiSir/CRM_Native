@@ -1,6 +1,8 @@
 package com.powerleader.cdn.crm_cdn.view.cus;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +27,10 @@ public class MyAdapter extends BaseAdapter {
     private int parentId;
 
     private IOnItemRightClickListener mListener = null;
+
     public interface IOnItemRightClickListener {
         void onItemClike(View v, int position, String sortid);
+        void onItemLongClike(View v, int position, String sortid);
     }
 
     public MyAdapter(Context context, int parentId, ArrayList<HashMap<String,String>> arrayList, String[] fromStr, int[] toId) {
@@ -77,11 +81,15 @@ public class MyAdapter extends BaseAdapter {
         if(uname.length() > 10){
             uname = uname.substring(0,10) + "...";
         }
-        ((TextView)views[0]).setText(uname);
-        ((TextView)views[0]).setWidth(parent.getWidth()/10*5);
-        ((TextView)views[0]).setGravity(Gravity.LEFT);
-        ((TextView)views[1]).setText(arrayList.get(position).get("contactName"));
-        ((TextView)views[1]).setGravity(Gravity.LEFT);
+        TextView name = (TextView)views[0];
+        name.setText(uname);
+        TextView contact = (TextView)views[1];
+        contact.setText(arrayList.get(position).get("contactName"));
+
+        name.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
+        contact.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
+
+        Log.i("**********", "getView: ----->"+name.getWidth()+"----->"+parent.getWidth());
 
         if(mListener !=null){
             views[1].setOnClickListener(new View.OnClickListener(){
@@ -94,6 +102,13 @@ public class MyAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     mListener.onItemClike(v,currPosition,arrayList.get(position).get("id"));
+                }
+            });
+            convertView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    mListener.onItemLongClike(view,currPosition,arrayList.get(position).get("id"));
+                    return true;
                 }
             });
         }

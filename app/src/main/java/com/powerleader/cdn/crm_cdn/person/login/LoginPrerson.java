@@ -1,9 +1,8 @@
 package com.powerleader.cdn.crm_cdn.person.login;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
-import com.powerleader.cdn.crm_cdn.person.cus.CusFragInterface;
+import com.powerleader.cdn.crm_cdn.bean.Contents;
+import com.powerleader.cdn.crm_cdn.bean.UserInfo;
 import com.powerleader.cdn.crm_cdn.view.HomeActivity;
 import com.powerleader.cdn.crm_cdn.R;
-import com.powerleader.cdn.crm_cdn.bean.LoginResult;
 import com.powerleader.cdn.crm_cdn.net.login.LoginForm;
 import com.powerleader.cdn.crm_cdn.util.database.DataTp_danju;
 import com.powerleader.cdn.crm_cdn.util.database.DataTp_user;
@@ -26,7 +25,6 @@ import com.powerleader.cdn.crm_cdn.view.login.LoginActivity;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.codec.language.DoubleMetaphone;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +43,7 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener, Login
     private DataTp_user dataTp_user;
     private DataTp_danju dataTp_danju;
     private String username,password;
+    ProgressDialog progressDialog;
 
     public LoginPrerson(Activity context) {
         this.context = context;
@@ -79,17 +78,28 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener, Login
                 pwdText.setFocusable(true);
                 return;
         }
+        Contents.Uname = username;
         password = new String(Hex.encodeHex(DigestUtils.sha1(new String(Hex.encodeHex(DigestUtils.md5(password))))));
-        loginprogressBar.setVisibility(View.VISIBLE);
-        loginForm.loginPostQuery(username,password);
+        progressDialog = ProgressDialog.show(context,"登录提示","正在登录,请稍后...");
+        loginForm.loginPostQuery(username,password,Contents.CRM_VERSION);
     }
 
     @Override
     public void loginResult(HashMap<String,Object> result) {
-        loginprogressBar.setVisibility(View.GONE);
+        progressDialog.dismiss();
         if (result.get("code").toString().equals("0")) {
             Log.i(LoginActivity.TAG, "loginResult: 登录成功!" );
             LoginActivity.setUid(((Double)result.get("uid")).intValue());
+            UserInfo user = UserInfo.init();
+            LinkedTreeMap datas = (LinkedTreeMap)result.get("user");
+            Log.i(TAG, "loginResult: datas--->"+datas);
+            user.setRoleid(((Double)datas.get("roleid")).intValue());
+            user.setId(((Double)datas.get("id")).intValue());
+            user.setRemarck(datas.get("remarck").toString());
+            user.setHeadImage(datas.get("headImage").toString());
+            //TODO: 需要啥添加啥,别客气
+            Log.i(TAG, "user: ---->"+user);
+
 //            LoginActivity.setUid(Integer.parseInt(result.get("uid").toString().split(".")[0]));
             HavingDealFragment.setAllData((ArrayList<LinkedTreeMap<String,Object>>) result.get("object"));
             skipToHome();
@@ -132,7 +142,11 @@ public class LoginPrerson implements LoginInterface, View.OnClickListener, Login
         Intent intent = new Intent();
         intent.setClass(context, HomeActivity.class);
         context.startActivity(intent);
+        Log.i(TAG, "skipToHome: 我要的动画出现！");
+        context.overridePendingTransition(R.anim.in_right_to_left,R.anim.out_right_to_left);
         context.finish();
+
+        Log.i(TAG, "skipToHome: 出现完了，看见了吗！");
     }
 
     @Override

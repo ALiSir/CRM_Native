@@ -16,6 +16,9 @@ import retrofit2.http.POST;
  */
 
 public interface CusNet {
+    @FormUrlEncoded
+    @POST(Contents.CLIENT_ALL)
+    Call<HashMap<String,Object>> postNamePwd(@Field("id") int id,@Field("info") String info,@Field("roleid") int roleid);
 
     @FormUrlEncoded
     @POST(Contents.CLIENT_ALL)

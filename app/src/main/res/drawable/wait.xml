@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+>
+    <item android:drawable="@mipmap/black_01" android:duration="150"/>
+    <item android:drawable="@mipmap/black_02" android:duration="150"/>
+    <item android:drawable="@mipmap/black_03" android:duration="150"/>
+    <item android:drawable="@mipmap/black_04" android:duration="150"/>
+    <item android:drawable="@mipmap/black_05" android:duration="150"/>
+    <item android:drawable="@mipmap/black_06" android:duration="150"/>
+    <item android:drawable="@mipmap/black_07" android:duration="150"/>
+    <item android:drawable="@mipmap/black_08" android:duration="150"/>
+    <item android:drawable="@mipmap/black_09" android:duration="150"/>
+    <item android:drawable="@mipmap/black_10" android:duration="150"/>
+    <item android:drawable="@mipmap/black_11" android:duration="150"/>
+    <item android:drawable="@mipmap/black_12" android:duration="150"/>
+
+</animation-list>

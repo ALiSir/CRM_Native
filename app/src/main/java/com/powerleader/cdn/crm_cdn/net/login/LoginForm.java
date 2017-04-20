@@ -25,7 +25,7 @@ public class LoginForm {
     private static final String TAG = LoginForm.class.getSimpleName();
     public OnLoginResult onLoginResult = null;
 
-    public void loginPostQuery(String username,String password) {
+    public void loginPostQuery(String username,String password,String version) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(60, TimeUnit.SECONDS);
         builder.readTimeout(60, TimeUnit.SECONDS);
@@ -39,7 +39,7 @@ public class LoginForm {
 
         LoginServer loginServer = retrofit.create(LoginServer.class);
 
-        Call<HashMap<String,Object>> tuUser = loginServer.postNamePwd(username,password, MActivity.getAndroidID());
+        Call<HashMap<String,Object>> tuUser = loginServer.postNamePwd(username,password, MActivity.getAndroidID(),version);
 
         tuUser.enqueue(new Callback<HashMap<String,Object>>() {
             @Override

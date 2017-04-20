@@ -2,23 +2,31 @@ package com.powerleader.cdn.crm_cdn.view.cus;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.internal.LinkedTreeMap;
+import com.mingle.widget.LoadingView;
 import com.powerleader.cdn.crm_cdn.ACFCustomActivity;
 import com.powerleader.cdn.crm_cdn.R;
 import com.powerleader.cdn.crm_cdn.bean.Contents;
+import com.powerleader.cdn.crm_cdn.bean.UserInfo;
 import com.powerleader.cdn.crm_cdn.irx.cus.CusRx;
 import com.powerleader.cdn.crm_cdn.person.ACFCustomInterface;
 import com.powerleader.cdn.crm_cdn.person.cus.CusFragInterface;
+import com.powerleader.cdn.crm_cdn.util.breakbricks.FunGameRefreshView;
+import com.powerleader.cdn.crm_cdn.view.hav.EditHavActivity;
 import com.powerleader.cdn.crm_cdn.view.login.LoginActivity;
 
 import java.util.ArrayList;
@@ -35,13 +43,14 @@ public class CustomFragment extends Fragment implements View.OnClickListener {
     private Context context;
     private LayoutInflater inflater;
     private SwipeListView listView;
-    private TextView cusload;
+//    private TextView cusload;
     private ArrayList<LinkedTreeMap<String, Object>> allData;
     private ArrayList<HashMap<String,String>> arrayList;
     private CusFragInterface cusFragInterface;
-    private Timer timer = new Timer(true);
     private MyAdapter myAdapter;
     private boolean isFirstRun = true;
+//    private ImageView imageView;
+    private LoadingView loadingView;
 
     public CustomFragment(){
     }
@@ -53,9 +62,13 @@ public class CustomFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_custom, container, false);
         context = inflater.getContext();
         cusFragInterface = new CusFragInterface(this,context);
-        cusload = (TextView) view.findViewById(R.id.cusroad);
-        //启动定时器
-        timer.schedule(task, 1000, 1000);
+//        cusload = (TextView) view.findViewById(R.id.cusroad);
+//        imageView = (ImageView) view.findViewById(R.id.imageView9);
+//        imageView.setBackgroundResource(R.drawable.wait);
+//        AnimationDrawable aniDra = (AnimationDrawable)imageView.getBackground();
+//        aniDra.start();
+        loadingView = (LoadingView) view.findViewById(R.id.cusloadView);
+        loadingView.setLoadingText("正在加载...");
         initRx();
         return view;
     }
@@ -79,7 +92,7 @@ public class CustomFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void initView(ArrayList<HashMap<String,String>> datas) {
+    private void initView(final ArrayList<HashMap<String,String>> datas) {
         listView = (SwipeListView) view.findViewById(R.id.cuslistView);
         listView.setRightViewWidth(0);
         if(isFirstRun){
@@ -104,20 +117,39 @@ public class CustomFragment extends Fragment implements View.OnClickListener {
                 intent.setClass(context,CusLookOneDetailActivity.class);
                 context.startActivity(intent);
             }
+
+            @Override
+            public void onItemLongClike(View v, int position, String sortid) {
+                Intent intent = new Intent();
+                intent.putExtra("CompanyName",datas.get(position).get("companyName"));
+                intent.putExtra("ContactName",datas.get(position).get("contactName"));
+                intent.putExtra("id",sortid);
+                intent.setClass(context, EditHavActivity.class);
+                context.startActivity(intent);
+            }
         });
         listView.setAdapter(myAdapter);
     }
 
     public void refreshCusDatas(){
         try{
-            task.run();
+            loadingView.setVisibility(View.VISIBLE);
+        }catch (Exception e){
+            Log.i(TAG, "loadingView--->refreshCusDatas: "+e.getLocalizedMessage());
+        }
+        try{
             listView.setVisibility(View.GONE);
-            cusload.setVisibility(View.VISIBLE);
         }catch (Exception e){
             Log.i(TAG, "refreshCusDatas: "+e.getLocalizedMessage());
         }
-        cusFragInterface.getAllData(LoginActivity.getUid(),"all");
+        UserInfo user = UserInfo.init();
+        cusFragInterface.getAllData(LoginActivity.getUid(),"all",user.getRoleid());
         Log.i(TAG, "refreshCusDatas: Cus刷新一下数据！");
+    }
+
+    public void showInfo(String info){
+        loadingView.setVisibility(View.GONE);
+        Toast.makeText(context, info, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -168,33 +200,14 @@ public class CustomFragment extends Fragment implements View.OnClickListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
-                case 0x123:
-                    if(cusload.length() == 5){
-                        cusload.setText("正在加载..");
-                    }else if(cusload.length() == 6){
-                        cusload.setText("正在加载...");
-                    }else {
-                        cusload.setText("正在加载.");
-                    }
-                    break;
                 case 0x456:
                     arrayList = cusFragInterface.initData();
                     initView(arrayList);
                     listView.setVisibility(View.VISIBLE);
-                    cusload.setVisibility(View.GONE);
+//                    cusload.setVisibility(View.GONE);
                     myAdapter.notifyDataSetChanged();
-                    task.cancel();
                     break;
             }
-        }
-    };
-
-    //任务
-    private TimerTask task = new TimerTask() {
-        public void run() {
-            Message msg = new Message();
-            msg.what = 0x123;
-            handler.sendMessage(msg);
         }
     };
 

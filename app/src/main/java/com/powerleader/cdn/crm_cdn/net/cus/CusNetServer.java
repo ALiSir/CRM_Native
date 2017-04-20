@@ -36,7 +36,7 @@ public class CusNetServer {
 
     }
 
-    public void cusPostForm(int id,String info){
+    public void cusPostForm(int id,String info,int roleid){
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(60, TimeUnit.SECONDS);
         builder.readTimeout(60, TimeUnit.SECONDS);
@@ -50,7 +50,7 @@ public class CusNetServer {
 
         CusNet cusServer = retrofit.create(CusNet.class);
 
-        Call<HashMap<String,Object>> tuUser = cusServer.postNamePwd(id,info);
+        Call<HashMap<String,Object>> tuUser = cusServer.postNamePwd(id,info,roleid);
 
         tuUser.enqueue(new Callback<HashMap<String,Object>>() {
             @Override
@@ -61,6 +61,7 @@ public class CusNetServer {
 
             @Override
             public void onFailure(Call<HashMap<String,Object>> call, Throwable t) {
+                Log.d(TAG, "cusPostForm onFailure() returned: " + t.getLocalizedMessage());
                 HashMap<String,Object> result = new HashMap<String, Object>();
                 result.put("code",-1);
                 result.put("msg",t.getMessage());

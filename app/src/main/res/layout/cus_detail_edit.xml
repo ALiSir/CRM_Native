@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFF"
+    android:layout_width="200dp"
+    android:layout_height="284dp"
+    android:background="@mipmap/edit_cus"
     android:orientation="vertical">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:id="@+id/textView5"
         android:textAlignment="center"
-        android:gravity="center"
+        android:gravity="bottom"
         android:layout_weight="1"/>
 
     <TextView
@@ -19,14 +19,13 @@
         android:layout_height="1dp"
         android:layout_margin="10dp"
         android:background="#999"/>
-    
+
     <TextView
         android:text="删除"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="#F00"
         android:id="@+id/textView8"
-        android:gravity="center"
         android:textAlignment="center"
         android:layout_weight="1"
         android:textSize="14sp" />

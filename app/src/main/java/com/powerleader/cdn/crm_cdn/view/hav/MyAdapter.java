@@ -1,6 +1,7 @@
 package com.powerleader.cdn.crm_cdn.view.hav;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,9 +82,16 @@ public class MyAdapter extends BaseAdapter {
         if(uname.length() > 10){
             uname = uname.substring(0,10) + "...";
         }
-        ((TextView)views[2]).setText(uname);
-        ((TextView)views[2]).setWidth(parent.getWidth()/10*5);
-        ((TextView)views[3]).setText(arrayList.get(position).get("time"));
+        TextView name = (TextView)views[2];
+        name.setText(uname);
+        name.setWidth(parent.getWidth()/10*5);
+        name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        TextView time = (TextView)views[3];
+        time.setText(arrayList.get(position).get("time"));
+        time.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        name.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
+        time.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
 
         if(mListener !=null){
             views[1].setOnClickListener(new View.OnClickListener(){

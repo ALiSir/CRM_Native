@@ -33,8 +33,8 @@ public class CusFragInterface implements CusNetServer.OnCuServerResult, View.OnC
         this.context = context;
     }
 
-    public void getAllData(int id,String info){
-        cusNetServer.cusPostForm(id,info);
+    public void getAllData(int id,String info,int roleid){
+        cusNetServer.cusPostForm(id,info,roleid);
     }
 
     public void setAllData(HashMap<String, Object> result){
@@ -51,7 +51,7 @@ public class CusFragInterface implements CusNetServer.OnCuServerResult, View.OnC
             }));
             cusRx.getLogOb().subscribe(cusRx.getLogSub());
         }else{
-            Toast.makeText(customFragment.getContext(), result.get("msg").toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, result.get("msg").toString(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -66,12 +66,16 @@ public class CusFragInterface implements CusNetServer.OnCuServerResult, View.OnC
             maps.put("id",tmp.get("id").toString());
             datas.add(maps);
         }
-
         return datas;
     }
 
     @Override
     public void havCuSeverResult(HashMap<String, Object> result) {
+        ArrayList items = (ArrayList)result.get("object");
+        if (items == null || items.size() == 0){
+            customFragment.showInfo("没有客户！请添加！");
+            return;
+        }
         this.setAllData(result);
     }
 

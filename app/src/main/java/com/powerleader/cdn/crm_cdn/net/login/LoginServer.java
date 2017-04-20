@@ -21,5 +21,5 @@ public interface LoginServer {
 
     @FormUrlEncoded
     @POST(Contents.LOGIN_FORM)
-    Call<HashMap<String,Object>> postNamePwd(@Field("username") String username, @Field("password") String password, @Field("deviceid") String deviceid);
+    Call<HashMap<String,Object>> postNamePwd(@Field("username") String username, @Field("password") String password, @Field("deviceid") String deviceid,@Field("CRM_Version")String version);
 }

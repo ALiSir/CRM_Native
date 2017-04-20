@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_user_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.powerleader.cdn.crm_cdn.view.more.userinfo.UserInfoActivity">
+
+    <com.ecloud.pulltozoomview.PullToZoomListViewEx
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:headerView="@layout/profile_head_view"
+        custom:zoomView="@layout/list_head_zoom_view"/>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@drawable/m_more_user_bg"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/tv_user_name_back"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:layout_gravity="bottom"
+            android:contentDescription="@string/app_name"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="3dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

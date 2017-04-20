@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="user_header_background">
+        <item name="android:background">@drawable/m_more_user_bg</item>
+    </style>
+
+</resources>

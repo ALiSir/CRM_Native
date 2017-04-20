@@ -61,4 +61,33 @@
         <item>删除</item>
     </string-array>
 
+    <string-array name="remind">
+        <item>初次接触</item>
+        <item>已报价</item>
+        <item>测试阶段</item>
+        <item>合同流程</item>
+        <item>商务谈判</item>
+        <item>已签约</item>
+    </string-array>
+
+    <string-array name="goods">
+        <item>静态加速</item>
+        <item>动态加速</item>
+        <item>下载</item>
+        <item>流媒体</item>
+    </string-array>
+
+    <string-array name="clientsource">
+        <item>直接分配</item>
+        <item>自主开发</item>
+        <item>展会</item>
+        <item>宝德集团客户</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="tixing">
+        <item>是</item>
+        <item>否</item>
+    </string-array>
+
 </resources>
